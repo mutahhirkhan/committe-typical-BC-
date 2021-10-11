@@ -14,11 +14,12 @@ async function main() {
     // await hre.run('compile');
 
     // We get the contract to deploy
+    const [deployer] = await ethers.getSigners();
 
     console.log("Account balance:", (await deployer.getBalance()).toString());
     console.log("Deploying contracts with the account:", deployer.address);
     
-    const Committee = await hre.ether.getContractFactory("Committee");
+    const Committee = await hre.ethers.getContractFactory("Committee");
     const committee = await Committee.deploy("Welcome To Committee");
 
     await committee.deployed();

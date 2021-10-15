@@ -18,13 +18,13 @@ async function main() {
 
     console.log("Account balance:", (await deployer.getBalance()).toString());
     console.log("Deploying contracts with the account:", deployer.address);
-    
+
     const Committee = await hre.ethers.getContractFactory("Committee");
-    const committee = await Committee.deploy("Welcome To Committee");
+    const committee = await Committee.deploy();
 
     await committee.deployed();
 
-    console.log("Committee deployed to:", greeter.address);
+    console.log("Committee deployed to:", committee.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
